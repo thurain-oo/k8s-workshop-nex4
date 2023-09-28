@@ -1,0 +1,20 @@
+- name: Create Linux Users
+  hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    user_list:
+      - username: thurain
+        password: letmein123!@#
+        groups:
+  tasks:
+    - name: Create Linux users
+      user:
+        name: "{{ item.username }}"
+        password: "{{ item.password | password_hash('sha512') }}"
+        shell: /bin/bash
+        groups: "{{ item.groups }}"
+        append: yes
+        state: present
+      with_items: "{{ user_list }}"
