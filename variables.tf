@@ -10,7 +10,6 @@ variable "region" {
 variable "profile" {
   description = "Please choose AWS Profile"
   type        = string
-  default     = "default"
 }
 
 variable "Cluster_name" {
@@ -40,8 +39,4 @@ variable "ngName" {
 
 }
 
-variable "vpc_name" {
-  description = "Please enter the vpc name: "
-  type = string
-}
 

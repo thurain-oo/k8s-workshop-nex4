@@ -6,7 +6,7 @@ module "eks" {
   cluster_version = "1.27"
 
   vpc_id                         = aws_vpc.lab_vpc.id
-  subnet_ids                     = aws_subnet.private_subnets
+  subnet_ids                     = [aws_subnet.private_subnets[0].id,aws_subnet.private_subnets[1].id]
   cluster_endpoint_public_access = true
 
   eks_managed_node_group_defaults = {
