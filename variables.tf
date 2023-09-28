@@ -10,7 +10,7 @@ variable "region" {
 variable "profile" {
   description = "Please choose AWS Profile"
   type        = string
-  #default     = "default"
+  default     = "default"
 }
 
 variable "Cluster_name" {
