@@ -14,7 +14,7 @@ resource "aws_vpc" "lab_vpc" {
 
 resource "aws_subnet" "public_subnets" {
   count             = 2
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.lab_vpc.id
   cidr_block        = element(["172.16.1.0/24", "172.16.2.0/24"], count.index)
   availability_zone = element(["ap-southeast-1a", "ap-southeast-1b"], count.index)
   tags = {  "kubernetes.io/cluster/${var.Cluster_name}" = "shared"
@@ -24,7 +24,7 @@ resource "aws_subnet" "public_subnets" {
 
 resource "aws_subnet" "private_subnets" {
   count             = 2
-  vpc_id            = aws_vpc.my_vpc.id
+  vpc_id            = aws_vpc.lab_vpc.id
   cidr_block        = element(["172.16.3.0/24", "172.16.4.0/24"], count.index)
   availability_zone = element(["ap-southeast-1a", "ap-southeast-1b"], count.index)
   tags = { 
@@ -42,11 +42,11 @@ resource "aws_nat_gateway" "nat_gateway" {
 
 
 resource "aws_internet_gateway" "my_igw" {
-  vpc_id = aws_vpc.my_vpc.id
+  vpc_id = aws_vpc.lab_vpc.id
 }
 
 resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.my_vpc.id
+  vpc_id = aws_vpc.lab_vpc.id
 }
 
 resource "aws_route" "public_route" {
