@@ -1,6 +1,5 @@
 provider "aws" {
   region = "ap-southeast-1"  
-  profile = "default"
 }
 
 resource "aws_vpc" "lab_vpc" {

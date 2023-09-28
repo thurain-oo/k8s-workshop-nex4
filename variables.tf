@@ -7,10 +7,6 @@ variable "region" {
   default     = "ap-southeast-1"
 }
 
-variable "profile" {
-  description = "Please choose AWS Profile"
-  type        = string
-}
 
 variable "Cluster_name" {
   description = "Please set EKS Cluster Name : "
@@ -33,10 +29,5 @@ variable "desired" {
   type        = number
  }
 
-variable "ngName" {
-  description = "Please enter the name for your node group:"
-  type = string
-
-}
 
 

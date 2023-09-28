@@ -16,7 +16,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     thurain_ng = {
-      name = var.ngName
+      name = "${var.Cluster_name}-ng"
 
       instance_types = ["m4.large"]
 
