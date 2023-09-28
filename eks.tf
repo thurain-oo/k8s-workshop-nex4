@@ -1,10 +1,3 @@
-provider "aws" {
-  region = var.region
-  profile = var.profile
-}
-
-
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.15.3"
