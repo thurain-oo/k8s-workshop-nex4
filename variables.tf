@@ -11,7 +11,6 @@ variable "region" {
 variable "Cluster_name" {
   description = "Please set EKS Cluster Name : "
   type = string
-  #default = "NEX4"
 }
 
 variable "min" {

@@ -16,8 +16,9 @@ resource "aws_subnet" "public_subnets" {
   vpc_id            = aws_vpc.lab_vpc.id
   cidr_block        = element(["172.16.1.0/24", "172.16.2.0/24"], count.index)
   availability_zone = element(["ap-southeast-1a", "ap-southeast-1b"], count.index)
-  tags = {  "kubernetes.io/cluster/${var.Cluster_name}" = "shared"
+  tags = { 
              "kubernetes.io/role/elb"                      = 1 
+                 "Type" = "public"
   }
 }
 
@@ -27,8 +28,8 @@ resource "aws_subnet" "private_subnets" {
   cidr_block        = element(["172.16.3.0/24", "172.16.4.0/24"], count.index)
   availability_zone = element(["ap-southeast-1a", "ap-southeast-1b"], count.index)
   tags = { 
-    "kubernetes.io/cluster/${var.Cluster_name}" = "shared"
     "kubernetes.io/role/internal-elb"             = 1 
+       "Type" = "private"
   } 
 }
 
